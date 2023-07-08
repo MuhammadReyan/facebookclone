@@ -22,10 +22,10 @@
             </div>
             <div class="boX1">
                 <br>
-                <input type="email number" placeholder="Email address or phone number" size="40" id="email">
+                <input type="email number" placeholder="Email address or phone number" size="40" id="email" class="loginEmail">
                 <br>
                 <br>
-                <input type="password" placeholder="Password" size="40" id="password">
+                <input type="password" placeholder="Password" size="40" id="password" class="loginPassword">
                 <br>
                 <button class="btn1" id="login">Log in</button>
                 <br>
@@ -41,18 +41,6 @@
             <p class="folx1"><strong>Creat a Page</strong> for a celebrity,brand or business</p>
 
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
         <!--Sign UP  -->
 
 
@@ -72,23 +60,23 @@
                         <form>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">FirstName:</label>
-                                <input type="text" class="form-control" id="recipient-name">
+                                <input type="text" class="form-control firstName " id="recipient-name">
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">SurName:</label>
-                                <input type="text" class="form-control" id="recipient-surname">
+                                <input type="text" class="form-control surName" id="recipient-surname">
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Email:</label>
-                                <input type="text" class="form-control" id="recipient-email">
+                                <input type="text" class="form-control signupemail" id="recipient-email">
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">MobileNum:</label>
-                                <input type="text" class="form-control" id="recipient-mobile">
+                                <input type="text" class="form-control phoneNumber" id="recipient-mobile">
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">New Password:</label>
-                                <input type="password" class="form-control" id="recipient-pass">
+                                <input type="password" class="form-control signUpPassword" id="recipient-pass">
                             </div>
                             <div class="dropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -96,12 +84,12 @@
                                     Date
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#" onclick="getDateHandler(1)">1</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="getDateHandler(2)">2</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="getDateHandler(3)">3</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="getDateHandler(4)">4</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="getDateHandler(5)">5</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="getDateHandler(6)">6</a></li>
+                                    <li><a class="dropdown-item" href="#" >1</a></li>
+                                    <li><a class="dropdown-item" href="#" >2</a></li>
+                                    <li><a class="dropdown-item" href="#" >3</a></li>
+                                    <li><a class="dropdown-item" href="#" >4</a></li>
+                                    <li><a class="dropdown-item" href="#" >5</a></li>
+                                    <li><a class="dropdown-item" href="#" >6</a></li>
                                 </ul>
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -109,15 +97,15 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li><a class="dropdown-item" href="#"
-                                            onclick="getMonthHandler('January')">January</a></li>
+                                            >January</a></li>
                                     <li><a class="dropdown-item" href="#"
-                                            onclick="getMonthHandler('February')">February</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="getMonthHandler('March')">March</a>
+                                            >February</a></li>
+                                    <li><a class="dropdown-item" href="#" >March</a>
                                     </li>
-                                    <li><a class="dropdown-item" href="#" onclick="getMonthHandler('April')">April</a>
+                                    <li><a class="dropdown-item" href="#" >April</a>
                                     </li>
-                                    <li><a class="dropdown-item" href="#" onclick="getMonthHandler('May')">May</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="getMonthHandler('June')">June</a>
+                                    <li><a class="dropdown-item" href="#" >May</a></li>
+                                    <li><a class="dropdown-item" href="#" >June</a>
                                     </li>
                                 </ul>
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -125,23 +113,23 @@
                                     Year
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#" onclick="getYearHandler(2000)">2000</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="getYearHandler(2001)">2001</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="getYearHandler(2002)">2002</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="getYearHandler(2003)">2003</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="getYearHandler(2004)">2004</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="getYearHandler(2005)">2005</a></li>
+                                    <li><a class="dropdown-item" href="#" >2000</a></li>
+                                    <li><a class="dropdown-item" href="#" >2001</a></li>
+                                    <li><a class="dropdown-item" href="#" >2002</a></li>
+                                    <li><a class="dropdown-item" href="#" >2003</a></li>
+                                    <li><a class="dropdown-item" href="#" >2004</a></li>
+                                    <li><a class="dropdown-item" href="#" >2005</a></li>
                                 </ul>
                             </div>
                             <input type="radio" class="btn-check" name="options-outlined" id="success-outlined"
                                 autocomplete="off" checked>
                             <label class="btn btn-outline-success" for="success-outlined"
-                                onclick="getGenderHandler('Male')">Male</label>
+                                >Male</label>
 
                             <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined"
                                 autocomplete="off">
                             <label class="btn btn-outline-danger" for="danger-outlined"
-                                onclick="getGenderHandler('Female')">Female</label>
+                                >Female</label>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -179,7 +167,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-    <script src="/app.js"></script>
+    <script type="module" src="/app.js"></script>
 </body>
 
 </html>

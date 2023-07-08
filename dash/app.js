@@ -21,6 +21,69 @@ if (!isLoggedInUser) {
 }
 const posts = JSON.parse(localStorage.getItem('posts')) || []
 
+
+posts.filter((post) => post.uerEmail === isLoggedInUser.email).forEach((post) => {
+
+    let div = document.createElement('div')
+    div.setAttribute('class', 'box')
+    div.innerHTML = `<div class="post-row">
+    <div class="user-profile">
+        <img src="/assets/profile-pic.png" alt="">
+        <div>
+            <p>${post.userName}</p>
+            <span>${post.date.split('T')[0]}<br> ${post.time}</span>
+        </div>
+    </div>
+    <a href="" style="text-decoration: none; color: #9a9a9a;"><i class="fas fa-ellipsis-v"></i></a>
+    </div>
+
+    <p class="post-text">
+    ${post.postContent}
+    </p>
+    <img src="/assets/feed-image-1.png" alt="" class="post-img img-fluid">
+
+    <div class="post-row">
+    <div class="activity-icons">
+        <div><img src="/assets/like-blue.png" alt="">100</div>
+        <div><img src="/assets/comments.png" alt="">90</div>
+        <div><img src="/assets/share.png" alt="">15</div>
+    </div>
+    <div class="post-profile-icon">
+        <img src="/assets/profile-pic.png" alt="">
+        <i class="fa-solid fa-caret-down"></i>
+    </div>
+    </div>`
+
+
+    postContainer.prepend(div)
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // emailAddress.innerText = isLoggedInUser.email
 // name.innerText = isLoggedInUser.firstName + " " + isLoggedInUser.surName
 // mobNum.innerText = isLoggedInUser.mobileNum
@@ -36,6 +99,7 @@ function logoutHandler() {
 ajaBeta.innerHTML = isLoggedInUser.firstName + " " + isLoggedInUser.surName
 let idr = document.querySelector('.idrbhshow')
 idr.innerHTML = isLoggedInUser.firstName + " " + isLoggedInUser.surName
+document.querySelector('.isside').innerHTML = `${isLoggedInUser.firstName} ${isLoggedInUser.surName}`
 console.log(ajaBeta)
 
 
@@ -102,42 +166,7 @@ ${messageText.value || "No Description"}
     localStorage.setItem('posts', JSON.stringify(posts))
 }
 
-posts.forEach((post) => {
 
-    let div = document.createElement('div')
-    div.setAttribute('class', 'box')
-    div.innerHTML = `<div class="post-row">
-    <div class="user-profile">
-        <img src="/assets/profile-pic.png" alt="">
-        <div>
-            <p>${post.userName}</p>
-            <span>${post.date.split('T')[0]}<br> ${post.time}</span>
-        </div>
-    </div>
-    <a href="" style="text-decoration: none; color: #9a9a9a;"><i class="fas fa-ellipsis-v"></i></a>
-    </div>
-
-    <p class="post-text">
-    ${post.postContent}
-    </p>
-    <img src="/assets/feed-image-1.png" alt="" class="post-img img-fluid">
-
-    <div class="post-row">
-    <div class="activity-icons">
-        <div><img src="/assets/like-blue.png" alt="">100</div>
-        <div><img src="/assets/comments.png" alt="">90</div>
-        <div><img src="/assets/share.png" alt="">15</div>
-    </div>
-    <div class="post-profile-icon">
-        <img src="/assets/profile-pic.png" alt="">
-        <i class="fa-solid fa-caret-down"></i>
-    </div>
-    </div>`
-
-
-    postContainer.prepend(div)
-
-})
 // FOR OF METHOD
 
 // for (let post of posts) {

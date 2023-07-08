@@ -1,183 +1,118 @@
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBuV5onuCaxH3fRiRIiNKo8su-3aagz93s",
+  authDomain: "social-media-85b20.firebaseapp.com",
+  projectId: "social-media-85b20",
+  storageBucket: "social-media-85b20.appspot.com",
+  messagingSenderId: "159678614150",
+  appId: "1:159678614150:web:7d23e6e6792e53a0c29f07"
+};
 
 
 
-// Start Javascript
 
 
-const email = document.querySelector('#email')
-const loginPassword = document.querySelector('#password')
-const firstName = document.querySelector('#recipient-name')
-const surName = document.querySelector('#recipient-surname')
-const mobNum = document.querySelector('#recipient-mobile')
-const password = document.querySelector('#recipient-pass')
-const signupEmail = document.querySelector('#recipient-email')
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
+
+const signUpEmail = document.querySelector('.signupemail')
+const firstName = document.querySelector('.firstName')
+const surName = document.querySelector('.surName')
+const phoneNumber = document.querySelector('.phoneNumber')
+const signUpPassword = document.querySelector('.signUpPassword')
+
+// Login Input Get
+
+const loginEmail = document.querySelector('.loginEmail')
+const loginPassword = document.querySelector('.loginPassword')
+
+
+
+// Signup Handler get  and put function
+
+const signUpBtn = document.querySelector('#signup')
+
+// Login Handler function and get 
 
 const loginBtn = document.querySelector('#login')
 
-const signupBtn = document.querySelector('#signup')
 
-let useer = JSON.parse(localStorage.getItem('useer')) || []
+// User Creating Account 
 
+async function signUpHandler  (){
+  try {
+    let response = await createUserWithEmailAndPassword(auth, signUpEmail.value, signUpPassword.value)
 
-
-let date;
-let month;
-let year;
-let gender;
-
-
-
+    console.log(response)
+    if (response.user) {
+      addUserHandler(response.user.uid)
+    }
 
 
+  } catch (error) {
+    console.error(error)
+  }
+
+}
+
+signUpBtn.addEventListener('click', signUpHandler)
 
 
 
-loginBtn.addEventListener('click', loginHandler)
-signupBtn.addEventListener('click', signHandler)
+
+// User  Login Function 
 
 
 function loginHandler() {
 
-    if (!email.value || !loginPassword.value) return alert("Please write email and password to continue process")
 
-
-    const userFound = useer.filter((user) => {
-        console.log("user email in userFound filter", user.email)
-        return user.email === email.value
+  signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      if (user) {
+        window.location.href = 'dash/index.html'
+      }
+      // ...
     })
-    if (!userFound.length){
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
 
-        // console.log(userFound.length)
-        
-        return alert("This user is not registered, kindly create an account first")
-    } 
-    
-    if (userFound[0].password   ==  loginPassword.value) {
-        alert("user is logging in")
-
-        localStorage.setItem('isLoggedInUser', JSON.stringify(userFound[0]))
-
-
-        window.location.href = "./dash/index.html";
-
-
-    } else {
-        alert("password is incorrect")
-    }
-
+      alert(errorMessage)
+    });
 }
 
-
-
-
-function signHandler() {
-
+loginBtn.addEventListener('click', loginHandler)
 
 
 
 
-    const userFound = useer.filter((user) => {
-        console.log("user email in userFound filter", user.signupEmail)
-        return user.signupEmail === signupEmail.value
-    })
-
-    if (userFound.length) return alert("Email address already in use, please use another email address")
-
-    // mobile number validation
-
-
-    console.log("user mil gaya ==>>>", userFound)
-
-    const modal = document.getElementById('exampleModal')
-
-    console.log(modal)
-
-    modal.classList.toggle('show')
+async function addUserHandler(uid) {
 
 
 
+  try {
+    let response = await setDoc(doc(db, "users", uid), {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if (firstName.value !== "" && surName.value !== "" && mobNum.value !== "" && password.value !== "" && date !== undefined && month !== undefined && year !== undefined && gender !== undefined) {
-
-        if (password.value.length < 8) return alert("Contain 8 Character")
-
-
-        let userObject = {
-
-            firstName: firstName.value,
-            surName: surName.value,
-            mobNum: mobNum.value,
-            password: password.value,
-            date: `${year} ${month} ${date}`,
-            email: signupEmail.value,
-            gender
-
-
-        }
-
-
-        useer.push(userObject)
-
-        localStorage.setItem('useer', JSON.stringify(useer))
-
-
-
-        alert("Done")
-
-
-        firstName.value = ""
-        surName.value = ""
-        mobNum.value = ""
-        password.value = ""
-        gender = ""
-
-
-    }
-    else {
-        alert("Fill Info Correctly")
-    }
-
-
-
-
+      firstName: firstName.value,
+      surName: surName.value,
+      phoneNumber: phoneNumber.value,
+      signUpEmail: signUpEmail.value,
+    });
+  } catch (error) {
+    console.error(error)
+  }
 }
-
-function getDateHandler(d) {
-    // console.log(d, "dateHandler working")
-    date = d
-}
-function getMonthHandler(m) {
-    // console.log(m, "monthHandler working")
-    month = m
-}
-function getYearHandler(y) {
-    // console.log(y, "yearHandler working")
-    year = y
-}
-function getGenderHandler(g) {
-    // console.log(g, "genderHandler working")
-    gender = g
-}
-
-
 
 
 

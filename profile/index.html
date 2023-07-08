@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaceBook</title>
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/dash/style.css">
+    <!-- FontAwesome  -->
+    <script src="https://kit.fontawesome.com/86637637cc.js" crossorigin="anonymous"></script>
+
+    <!-- BOOTSTRAP -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <!--     NAV AREA               -->
+
+    <nav>
+        <div class="nav-left">
+            <a href="/dash/index.html"><img src="/assets/Facebook-Logo-Meaning-removebg-preview.png "
+                    class="logo img-fluid"></a>
+            <ul>
+                <li><img src="../assets/notification.png"></li>
+                <li><img src="../assets/inbox.png"></li>
+                <li><img src="../assets/video.png"></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+
+            <div class="search-box">
+                <img src="../assets/search.png">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="nav-user-icon online" onclick="displayShow()">
+                <img src="../assets/profile-pic.png" alt="">
+            </div>
+
+        </div>
+
+
+        <div class="setting-menu">
+
+            <div class="setting-inner-menu">
+                <div class="user-profile">
+                    <img src="/assets/profile-pic.png" alt="">
+                    <div>
+                        <p class="ajabeta"></p>
+                        <a href="/profile/index.html">See you Profile</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="user-profile ">
+                    <img src="/assets/feedback.png" alt="">
+                    <div>
+
+                        <a href="">Give FeedBack</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="user-profile ">
+                    <img src="/assets/setting.png" alt="">
+                    <div>
+
+                        <a href="">Setting</a>
+                    </div>
+
+                </div>
+                <hr>
+                <div class="user-profile ">
+                    <img src="/assets/logout.png" alt="">
+                    <div>
+
+                        <a href="" onclick=" logoutHandler()">Log Out</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </nav>
+
+    <!-- Profile Page -->
+
+
+    <div class="profile-container">
+        <img src="/assets/cover.png" alt="" class="img-fluid cover-img">
+        <div class="profile-details">
+            <div class="pd-left">
+                <div class="pd-row">
+                    <img src="/assets/head-shot-portrait-close-smiling-260nw-1714666150.webp" alt="" class="pd-img img-fluid">
+                    <div>
+                        <h3 class="isside"></h3>
+                        <p>1000k Friends - 500 Mutal</p>
+                        <img src="/assets/member-1.png" alt="">
+                        <img src="/assets/member-2.png" alt="">
+                        <img src="/assets/member-3.png" alt="">
+                        <img src="/assets/member-4.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pd-right">
+                <button type="button"><img src="/assets/add-friends.png" alt=""> Friends</button>
+                <button type="button"><img src="/assets/message.png" alt=""> Messages</button>
+                <br>
+                <a href=""><img src="/assets/more.png" alt=""></a>
+
+            </div>
+        </div>
+
+
+        <div class="profile-info">
+            <div class="info-col">
+
+
+                <div class="profile-intro">
+                    <h3>Bio</h3>
+                    <p class="intro-text ">Hello World
+                        <img src="/assets/feeling.png" alt="">
+                    </p>
+                    <hr>
+                    <ul>
+                        <li> <img src="/assets/profile-job.png" alt=""> IT Manager</li>
+                        <li><img src="/assets/profile-study.png" alt="">School</li>
+                        <li><img src="/assets/profile-location.png" alt="">Locatiion</li>
+                        <li><img src="/assets/profile-home.png" alt="">From Karachi</li>
+                    </ul>
+                </div>
+                <div class="profile-intro">
+                    <div class="title-box">
+                        <h3>Photos</h3>
+                        <a href="">All Photos</a>
+                    </div>
+
+
+                    <div class="photo-box">
+                        <div><img src="/assets/photo1.png" alt=""></div>
+                        <div><img src="/assets/photo2.png" alt=""></div>
+                        <div><img src="/assets/photo3.png" alt=""></div>
+                        <div><img src="/assets/photo4.png" alt=""></div>
+                        <div><img src="/assets/photo5.png" alt=""></div>
+                        <div><img src="/assets/photo6.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="profile-intro">
+                    <div class="title-box">
+                        <h3>Friends</h3>
+                        <a href="">All Photos</a>
+                    </div>
+                    <p>120(Mutal 20 Friends)</p>
+
+                    <div class="photo-box">
+                        <div><img src="/assets/member-1.png" alt=""></div>
+                        <div><img src="/assets/member-2.png" alt=""></div>
+                        <div><img src="/assets/member-3.png" alt=""></div>
+                        <div><img src="/assets/member-4.png" alt=""></div>
+                        <div><img src="/assets/member-5.png" alt=""></div>
+                        <div><img src="/assets/member-6.png" alt=""></div>
+                        <div><img src="/assets/member-7.png" alt=""></div>
+                        <div><img src="/assets/member-7.png" alt=""></div>
+                        <div><img src="/assets/member-7.png" alt=""></div>
+                       
+                    </div>
+                </div>
+
+
+
+
+
+
+
+            </div>
+            <div class="post-col">
+
+                <div class="write-post-container">
+                    <div class="user-profile">
+                        <img src="/assets/profile-pic.png" alt="">
+                        <div>
+                            <p class="idrbhshow"></p>
+                            <small>Public <i class="fa-solid fa-caret-down"></i> </small>
+                        </div>
+                    </div>
+
+
+
+                    <div class="post-input-container">
+                        <!-- <textarea rows="3" placeholder="What's on your mind ?"> </textarea> -->
+                        <!-- MODAL -->
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            data-bs-whatever="@mdo">What's on your mind ?</button>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title fs-5" id="exampleModalLabel"><img
+                                                src="/assets/profile-pic.png" alt="" width="20px"
+                                                class="img-fluid modal-img"></h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="recipient-name" class="col-form-label">Post</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="message-text" class="col-form-label">Description</label>
+                                                <textarea class="form-control" id="message-text"></textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">CLOSE</button>
+                                        <button type="button" class="btn btn-primary" onclick="postHandler()">POST
+                                            NOW</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal End -->
+
+
+                        <div class="add-post-links">
+                            <a href=""><img src="/assets/live-video.png" alt="">Live Video</a>
+                            <a href=""><img src="/assets/photo.png" alt="">Photo Video</a>
+                            <a href=""><img src="/assets/feeling.png" alt=""> Feeling/Activity</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-container">
+                    <div class="box">
+                        <!-- <div class="post-row">
+                        <div class="user-profile">
+                            <img src="/assets/profile-pic.png" alt="">
+                            <div>
+                                <p>John Jones</p>
+                                <span>June 5 2023,9:40Pm</span>
+                            </div>
+                        </div>
+                        <a href="" style="text-decoration: none; color: #9a9a9a;"><i class="fas fa-ellipsis-v"></i></a>
+                    </div>
+                    
+                    <p class="post-text">
+                        Description
+                    </p>
+                    <img src="/assets/feed-image-1.png" alt="" class="post-img img-fluid">
+    
+                    <div class="post-row">
+                        <div class="activity-icons">
+                            <div><img src="/assets/like-blue.png" alt="">100</div>
+                            <div><img src="/assets/comments.png" alt="">90</div>
+                            <div><img src="/assets/share.png" alt="">15</div>
+                        </div>
+                        <div class="post-profile-icon">
+                            <img src="/assets/profile-pic.png" alt="">
+                            <i class="fa-solid fa-caret-down"></i>
+                        </div>
+                    </div> -->
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- BootStrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/dash/app.js"></script>
+</body>
+
+</html>

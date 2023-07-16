@@ -24,9 +24,9 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 
-const signUpEmail = document.querySelector('.signupemail')
 const firstName = document.querySelector('.firstName')
 const surName = document.querySelector('.surName')
+const signUpEmail = document.querySelector('.signupemail')
 const phoneNumber = document.querySelector('.phoneNumber')
 const signUpPassword = document.querySelector('.signUpPassword')
 
@@ -48,12 +48,12 @@ const loginBtn = document.querySelector('#login')
 
 // User Creating Account 
 
-async function signUpHandler  (){
+async function signUpHandler() {
   try {
     let response = await createUserWithEmailAndPassword(auth, signUpEmail.value, signUpPassword.value)
 
     console.log(response)
-    if (response.user) {
+    if (response.user.uid) {
       addUserHandler(response.user.uid)
     }
 
@@ -80,6 +80,7 @@ function loginHandler() {
       // Signed in 
       const user = userCredential.user;
       if (user) {
+        alert("user login ")
         window.location.href = 'dash/index.html'
       }
       // ...
@@ -99,8 +100,6 @@ loginBtn.addEventListener('click', loginHandler)
 
 async function addUserHandler(uid) {
 
-
-
   try {
     let response = await setDoc(doc(db, "users", uid), {
 
@@ -109,6 +108,8 @@ async function addUserHandler(uid) {
       phoneNumber: phoneNumber.value,
       signUpEmail: signUpEmail.value,
     });
+    // console.log(response)
+    window.location.href = 'index.html'
   } catch (error) {
     console.error(error)
   }

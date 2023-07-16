@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FaceBook</title>
+    <link rel="icon" href="/assets/hLRJ1GG_y0J.ico" type="image">
     <!-- Style CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- FontAwesome  -->
@@ -36,11 +37,12 @@
                 <img src="../assets/search.png">
                 <input type="text" placeholder="Search">
             </div>
-            <div class="nav-user-icon online" onclick="displayShow()">
+            <div class="nav-user-icon online" id="signOut">
                 <img src="../assets/profile-pic.png" alt="">
             </div>
 
         </div>
+        
 
 
         <div class="setting-menu">
@@ -58,7 +60,8 @@
                     <img src="/assets/feedback.png" alt="">
                     <div>
 
-                        <a href="">Give FeedBack</a>
+                        <!-- <a href="">Give FeedBack</a> -->
+                        <a href="/user/user.html">All User</a>
                     </div>
                 </div>
                 <hr>
@@ -75,7 +78,8 @@
                     <img src="/assets/logout.png" alt="">
                     <div>
 
-                        <a href="" onclick=" logoutHandler()">Log Out</a>
+                        <!-- <a href="" onclick=" logoutHandler()">Log Out</a> -->
+                        <a href=""  id="logOut">Log Out</a>
                     </div>
                 </div>
             </div>
@@ -294,7 +298,7 @@
                                     <form>
                                         <div class="mb-3">
                                             <label for="recipient-name" class="col-form-label">Post</label>
-                                            <input type="text" class="form-control" id="recipient-name">
+                                            <input type="text" class="form-control postInput" id="recipient-name">
                                         </div>
                                         <div class="mb-3">
                                             <label for="message-text" class="col-form-label">Description</label>
@@ -305,7 +309,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">CLOSE</button>
-                                    <button type="button" class="btn btn-primary" onclick="postHandler()">POST
+                                    <button type="button" class="btn btn-primary" id="postBtn">POST
                                         NOW</button>
                                 </div>
                             </div>
@@ -354,7 +358,7 @@
                         <img src="/assets/profile-pic.png" alt="">
                         <div>
                             <p>John Jones</p>
-                            <span>June 5 2023,9:40Pm</span>
+                            <span class="userName"></span>
                         </div>
                     </div>
                     <a href="" style="text-decoration: none; color: #9a9a9a;"><i class="fas fa-ellipsis-v"></i></a>
@@ -535,7 +539,7 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
 
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 
 </html>

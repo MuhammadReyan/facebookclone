@@ -1,40 +1,35 @@
 
 
-// FireBase
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-
-import { getAuth, onAuthStateChanged, signOut, } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+// // FireBase
 
 import {
-    getFirestore, collection, addDoc, setDoc, doc, query, where, getDocs, getDoc,
-} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"
+    auth,
+    db,
+    doc,
+    getDoc,
+    onAuthStateChanged,
+    signOut,
+    setDoc,
+    addDoc,
+    collection,
+    getDocs,
+    getAuth
+} from '../firebaseConfig.js'
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBuV5onuCaxH3fRiRIiNKo8su-3aagz93s",
-    authDomain: "social-media-85b20.firebaseapp.com",
-    projectId: "social-media-85b20",
-    storageBucket: "social-media-85b20.appspot.com",
-    messagingSenderId: "159678614150",
-    appId: "1:159678614150:web:7d23e6e6792e53a0c29f07"
-};
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
 
-// const signUpEmail = document.querySelector('.signupemail')
-// const firstName = document.querySelector('.firstName')
-// const surName = document.querySelector('.surName')
-// const phoneNumber = document.querySelector('.phoneNumber')
-// const signUpPassword = document.querySelector('.signUpPassword')
+
+
+
 const logOut = document.getElementById('logOut')
 const signOutBtn = document.getElementById('signOut')
 const postBtn = document.getElementById('postBtn')
 const postInput = document.querySelector('.postInput')
 const postContainer = document.querySelector('.post-container')
-// const userNameHTML = document.querySelector('.userName')
+
+
+const dashBoardpp = document.querySelector('.pp')
+
 
 
 function displayShow() {
@@ -84,11 +79,13 @@ async function getUserData(uid) {
 
         if (docSnap.exists()) {
             // console.log("Document data:", docSnap.data());
-            const { surName, signUpEmail, phoneNumber, firstName, } = docSnap.data()
+            const { surName, signUpEmail, phoneNumber, firstName, profilePicture } = docSnap.data()
             // userNameHTML.textContent = surName
             // emailAddressHTML.textContent = signUpEmail
             // mobNumHTML.textContent = phoneNumber
             // firstName.textContent = firstName
+            dashBoardpp.src = profilePicture
+
 
         } else {
             // docSnap.data() will be undefined in this case
@@ -169,13 +166,13 @@ async function getPosts() {
     </div> `
         postElement.innerHTML = content
 
-       
-    
-    
+
+
+
 
         postContainer.prepend(postElement)
 
-        
+
 
     });
 
@@ -190,17 +187,17 @@ async function getAuthorData(authorUid) {
     console.log(authorUid, "==>>authorUid")
     try {
 
-    const docRef = doc(db, "users", authorUid);
-    const docSnap = await getDoc(docRef);
+        const docRef = doc(db, "users", authorUid);
+        const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-        return docSnap.data()
-    } else {
-        // docSnap.data() will be undefined in this case
-        console.log("No such document!");
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data());
+            return docSnap.data()
+        } else {
+            // docSnap.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    } catch (error) {
+        console.log(error)
     }
-   } catch (error) {
-    console.log(error)
-   }
 }

@@ -1,28 +1,5 @@
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-
-import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBuV5onuCaxH3fRiRIiNKo8su-3aagz93s",
-  authDomain: "social-media-85b20.firebaseapp.com",
-  projectId: "social-media-85b20",
-  storageBucket: "social-media-85b20.appspot.com",
-  messagingSenderId: "159678614150",
-  appId: "1:159678614150:web:7d23e6e6792e53a0c29f07"
-};
-
-
-
-
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
+import { auth, app, db, getFirestore, collection, addDoc, setDoc, doc, getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from './firebaseConfig.js'
 
 const firstName = document.querySelector('.firstName')
 const surName = document.querySelector('.surName')

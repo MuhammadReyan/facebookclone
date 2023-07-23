@@ -13,7 +13,11 @@ import {
     addDoc,
     collection,
     getDocs,
-    getAuth
+    getAuth,
+    storage,
+    ref,
+    uploadBytesResumable,
+    getDownloadURL
 } from '../firebaseConfig.js'
 
 
@@ -26,6 +30,8 @@ const signOutBtn = document.getElementById('signOut')
 const postBtn = document.getElementById('postBtn')
 const postInput = document.querySelector('.postInput')
 const postContainer = document.querySelector('.post-container')
+const uploadImage = document.getElementById('uploadImage')
+const curentUser = document.querySelector('.curentUser')
 
 
 const dashBoardpp = document.querySelector('.pp')
@@ -84,7 +90,8 @@ async function getUserData(uid) {
             // emailAddressHTML.textContent = signUpEmail
             // mobNumHTML.textContent = phoneNumber
             // firstName.textContent = firstName
-            dashBoardpp.src = profilePicture
+            curentUser.innerHTML = firstName
+            dashBoardpp.src = profilePicture || '../assets/pp.jpg'
 
 
         } else {
@@ -106,20 +113,133 @@ async function postHandler() {
     // console.log(postInputBox.value)
     // console.log(currentLoggedInUser, "==>>currentLoggedInUser")
     confirm("Data Post")
-    try {
-        const response = await addDoc(collection(db, "posts"), {
-            postContent: postInput.value,
-            authorId: currentLoggedInUser
-        });
-        getPosts()
 
-        let modal = document.getElementById('exampleModal');
-        let modalInstance = bootstrap.Modal.getInstance(modal);
-        modalInstance.hide();
-        // console.log(response.id)
-    } catch (e) {
-        console.error("Error adding document: ", e);
-    }
+    const file = uploadImage.files[0]
+
+    // Create the file metadata
+    /** @type {any} */
+    const metadata = {
+        contentType: 'image/jpeg'
+    };
+
+    // Upload file and metadata to the object 'images/mountains.jpg'
+    const storageRef = ref(storage, 'images/' + file.name);
+    const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+
+    // Listen for state changes, errors, and completion of the upload.
+    uploadTask.on('state_changed',
+        (snapshot) => {
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+            switch (snapshot.state) {
+                case 'paused':
+                    console.log('Upload is paused');
+                    break;
+                case 'running':
+                    console.log('Upload is running');
+                    break;
+            }
+        },
+        (error) => {
+            // A full list of error codes is available at
+            // https://firebase.google.com/docs/storage/web/handle-errors
+            switch (error.code) {
+                case 'storage/unauthorized':
+                    // User doesn't have permission to access the object
+                    break;
+                case 'storage/canceled':
+                    // User canceled the upload
+                    break;
+
+                // ...
+
+                case 'storage/unknown':
+                    // Unknown error occurred, inspect error.serverResponse
+                    break;
+            }
+        },
+        () => {
+            // Upload completed successfully, now we can get the download URL
+            getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+                console.log('File available at', downloadURL);
+
+
+
+                try {
+                    const response = await addDoc(collection(db, "posts"), {
+                        postContent: postInput.value,
+                        authorId: currentLoggedInUser,
+                        postImageUrl: downloadURL
+
+                    });
+                    getPosts()
+
+                    let modal = document.getElementById('exampleModal');
+                    let modalInstance = bootstrap.Modal.getInstance(modal);
+                    modalInstance.hide();
+                    // console.log(response.id)
+                } catch (e) {
+                    console.error("Error adding document: ", e);
+                }
+
+
+                // await setDoc(doc(db, "users", currentLoggedInUser), {
+                //     firstName: firstName.value,
+                //     surName: surName.value,
+                //     mobileNumber: mobileNumber.value,
+                //     profilePicture: downloadURL
+                // });
+            });
+        }
+    );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -130,7 +250,7 @@ async function getPosts() {
     querySnapshot.forEach(async (doc) => {
         // doc.data() is never undefined for query doc snapshots
         // console.log(doc.id, " => ", doc.data());
-        const { authorId, postContent } = doc.data()
+        const { authorId, postContent, postImageUrl } = doc.data()
 
 
         const authorDetails = await getAuthorData(authorId)
@@ -151,7 +271,7 @@ async function getPosts() {
     <p class="post-text">
        ${postContent}
     </p>
-    <img src="/assets/feed-image-1.png" alt="" class="post-img img-fluid">
+    <img src=${postImageUrl} alt="" class="post-img img-fluid">
 
     <div class="post-row">
         <div class="activity-icons">
@@ -161,16 +281,15 @@ async function getPosts() {
         </div>
         <div class="post-profile-icon">
             <img src="/assets/profile-pic.png" alt="">
-            <i class="fa-solid fa-caret-down"></i>
+            <i class="fas fa-caret-down"></i>
         </div>
     </div> `
+
+
+
         postElement.innerHTML = content
 
-
-
-
-
-        postContainer.prepend(postElement)
+        postContainer.appendChild(postElement)
 
 
 
